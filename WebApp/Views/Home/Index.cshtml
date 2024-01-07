@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Landmark.WebApp.Models.RaceModel>
+@{
+    ViewData["Title"] = "Список команд";
+}
+
+<h2>Команды</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Номер</th>
+            <th>М/Ж</th>
+            <th>Участники</th>
+            <th>Номер NFC</th>
+            <th>Старт</th>
+            <th>Финиш</th>
+            <th>Число КП</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SexType)
+                </td>
+                <td>
+                    @{
+                        foreach (var participant in item.Participants)
+                        {
+                            @participant <br />
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SerialTag)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FinishTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CountPoints)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
